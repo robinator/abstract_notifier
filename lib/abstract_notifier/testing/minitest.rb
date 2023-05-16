@@ -4,7 +4,7 @@ module AbstractNotifier
   module TestHelper
     def assert_notifications_sent(count, params)
       yield
-      assert_equal deliveries.count, count
+      assert_equal count, deliveries.count
       count.times do |i|
         delivery = deliveries[0 - i]
         msg = message(msg) { "Expected #{mu_pp(delivery)} to include #{mu_pp(params)}" }
@@ -14,7 +14,7 @@ module AbstractNotifier
 
     def assert_notifications_enqueued(count, params)
       yield
-      assert_equal enqueued_deliveries.count, count
+      assert_equal count, enqueued_deliveries.count
       count.times do |i|
         delivery = enqueued_deliveries[0 - i]
         msg = message(msg) { "Expected #{mu_pp(delivery)} to include #{mu_pp(params)}" }
